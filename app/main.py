@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from app.database import engine
 from app.models import Base
-from app.router import auth, tasks, ai
+from app.router import auth, tasks, ai, users
 from app.exceptions import register_all_errors
 import logging
 import time
@@ -25,6 +25,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(auth.router)
 app.include_router(tasks.router)
 app.include_router(ai.router)
+app.include_router(users.router)
 
 app.add_middleware(
     CORSMiddleware,

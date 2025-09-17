@@ -28,6 +28,9 @@ def get_user(db: Session, username: str):
 def authenticate_user(db: Session, username: str, password: str):
     try:
         user = get_user(db, username)
+        print(f"User found: {user.username}")
+        print(f"Stored hash: {user.password_hash}")
+        print(f"Password verification: {verify_password(password, user.password_hash)}")
         if not verify_password(password, user.password_hash):
             raise InvalidCredentials()
         return user
@@ -58,6 +61,5 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
     return user
 
 async def get_current_active_user(current_user: models.User = Depends(get_current_user)):
-    if not current_user.is_active:
-        raise HTTPException(status_code=400, detail="Inactive user")
+
     return current_user

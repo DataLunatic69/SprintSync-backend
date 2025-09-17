@@ -113,7 +113,8 @@ async def update_task_status(
     if not current_user.is_admin and task.user_id != current_user.id:
         raise InsufficientPermission()
     
-    task.status = status
+    # Convert the schema enum to the model enum
+    task.status = models.TaskStatus[status.name]  # Use .name to get the enum member name
     db.commit()
     db.refresh(task)
     return task

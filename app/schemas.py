@@ -21,7 +21,7 @@ class User(UserBase):
     id: str
     is_admin: bool
     created_at: datetime
-    updated_at: datetime
+    updated_at: Optional[datetime] = None  # Change this line
 
     class Config:
         from_attributes = True
@@ -49,7 +49,10 @@ class Task(TaskBase):
     total_minutes: int
     user_id: str
     created_at: datetime
-    updated_at: datetime
+    updated_at: Optional[datetime] = None  # Make this optional
+
+    class Config:
+        from_attributes = True
 
     class Config:
         from_attributes = True
