@@ -1,6 +1,8 @@
 #!/bin/bash
-# render-build.sh
 set -e
+
+echo "Setting up database connection for Alembic..."
+export SQLALCHEMY_URL=$DATABASE_URL
 
 echo "Running Alembic migrations..."
 alembic upgrade head
