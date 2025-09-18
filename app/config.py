@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import AnyUrl
+from pydantic import AnyUrl, Field
 
 class Settings(BaseSettings):
     DATABASE_URL: AnyUrl
@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     GROQ_API_KEY: str = ""
+    PORT: int = Field(default=8000, env="PORT")
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

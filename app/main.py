@@ -27,9 +27,15 @@ app.include_router(tasks.router)
 app.include_router(ai.router)
 app.include_router(users.router)
 
+origins = [
+    "http://localhost:3000",  # Local development
+    "https://your-frontend-domain.vercel.app", 
+    "https://sprintsync-backend.onrender.com", 
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend URL for development
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
