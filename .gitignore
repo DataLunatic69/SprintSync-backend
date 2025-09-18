@@ -66,3 +66,5 @@ alembic.ini
 htmlcov/
 .coverage
 .coverage.*
+
+.env.production
