@@ -30,7 +30,7 @@ app.include_router(users.router)
 origins = [
     "http://localhost:3000", 
     "http://localhost:5173", 
-    "http://localhost:5174", # Local development
+    "http://localhost:5174", 
     "https://your-frontend-domain.vercel.app", 
     "https://sprintsync-backend-c7il.onrender.com/", 
 ]
