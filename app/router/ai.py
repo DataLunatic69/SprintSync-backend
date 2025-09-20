@@ -6,7 +6,7 @@ from app import schemas
 from app.config import config
 import logging
 from langchain_groq import ChatGroq
-from app.vector_db import pinecone_service
+
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/ai", tags=["ai"])
